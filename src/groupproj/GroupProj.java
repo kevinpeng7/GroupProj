@@ -19,7 +19,7 @@ public class GroupProj extends JFrame {
     public static Date endTime = new Date();
     String[] families = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "AM", "PM"};
     
-    public static void main(String[] args) throws ParseException {
+    public static void main(String[] args) throws ParseException, InterruptedException {
 	GroupProj g = new GroupProj();
 	g.setTitle("ALARM");
 	g.setSize(200,160);
@@ -30,6 +30,7 @@ public class GroupProj extends JFrame {
         
         while(getCurrentCounter() > 0){
             g.paint(g.getGraphics(), getCurrentCounter());
+            Thread.sleep(500);
         }
         
         g.paint(g.getGraphics(), 0);
