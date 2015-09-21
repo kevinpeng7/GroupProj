@@ -37,8 +37,23 @@ public class GroupProj extends JFrame {
     }
     
     public GroupProj() throws ParseException{
+        String input = JOptionPane.showInputDialog("Timer time in format mm:ss");
+        System.out.println(input);
+        String numbers = "0123456789";
+
+        while (
+                input.length() != 5 || 
+                numbers.indexOf(input.substring(0, 1)) == -1 || 
+                numbers.indexOf(input.substring(1, 2)) == -1 ||
+                !input.substring(2, 3).equals(":") ||
+                numbers.indexOf(input.substring(3, 4)) == -1 ||
+                numbers.indexOf(input.substring(4, 5)) == -1 
+                ){
+            input = JOptionPane.showInputDialog("Not the acceptable time format of mm:ss");
+        }
+        int time = Integer.parseInt(input.substring(0, 2)) * 60 + Integer.parseInt(input.substring(3, 5));
         setStartTime();
-        setEndTime(1500000);
+        setEndTime(time*1000); 
     }
     
     public static void setStartTime() throws ParseException{
